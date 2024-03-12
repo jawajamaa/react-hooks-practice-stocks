@@ -6,7 +6,8 @@ function Stock({ stock }) {
   const { portfolio, setPortfolio } = useContext(PortfolioContext);
 
   function handleClick() {
-    console.log( stock.name + " was clicked")
+    console.log( stock.name + " " + stock.id + " was clicked")
+    setPortfolio([...portfolio, stock])
   }
 
   return (
