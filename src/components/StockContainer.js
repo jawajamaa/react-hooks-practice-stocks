@@ -12,7 +12,7 @@ console.log(stocks);
       <h2>Stocks</h2>
       {stocks.map(stock =>(
         <Stock
-          key = { stock.id } 
+          key = { stock.id} 
           stock = { stock }
         />
       ))}

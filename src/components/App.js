@@ -14,3 +14,4 @@ function App() {
 export default App;
 
 export const StockContext = createContext([]);
+export const PortfolioContext = createContext([]);

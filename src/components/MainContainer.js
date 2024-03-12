@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { StockContext } from "./App";
+import { PortfolioContext, StockContext } from "./App";
 import PortfolioContainer from "./PortfolioContainer";
 import SearchBar from "./SearchBar";
 import StockContainer from "./StockContainer";
@@ -8,6 +8,7 @@ const baseUrl = "http://localhost:3001/stocks/";
 
 function MainContainer() {
   const [stocks, setStocks] = useState([]);
+  const [portfolio, setPortfolio] = useState([]);
 
   useEffect(()=>{
     fetch(baseUrl)
@@ -17,15 +18,17 @@ function MainContainer() {
 
   return (
     <StockContext.Provider value = { {stocks, setStocks}}>
-      <SearchBar />
-      <div className="row">
-        <div className="col-8">
-          <StockContainer />
+      <PortfolioContext.Provider value = { {portfolio, setPortfolio} }>
+        <SearchBar />
+        <div className="row">
+          <div className="col-8">
+            <StockContainer />
+          </div>
+          <div className="col-4">
+            <PortfolioContainer />
+          </div>
         </div>
-        <div className="col-4">
-          <PortfolioContainer />
-        </div>
-      </div>
+      </PortfolioContext.Provider>
     </StockContext.Provider>
   );
 }
